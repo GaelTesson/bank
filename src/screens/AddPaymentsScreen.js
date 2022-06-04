@@ -8,10 +8,6 @@ const AddPaymentsScreen = () => {
   const navigation = useNavigation()
   return (
     <View style={{flex:1}}>
-      
-      <IconButton onPress={()=>
-      navigation.navigate('Home')
-      } icon="home"/>
 
       <AjoutDepenses/>
 

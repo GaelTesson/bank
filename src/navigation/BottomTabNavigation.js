@@ -35,12 +35,13 @@ const BottomTabNavigation = () => {
         elevation: 8,
         shadowColor: '#000',
         alignSelf: 'center',
-        borderRadius: 15,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.8,
         shadowRadius: 2,
         elevation: 5,
         width: '100%',
+        borderTopColor: '#03045e',
+        borderTopWidth: 1,
 
       }}
 

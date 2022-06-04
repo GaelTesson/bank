@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Text, ScrollView, TouchableOpacity} from 'react-native'
+import { View, StyleSheet, Image, Text, ScrollView, TouchableOpacity,SafeAreaView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { TextInput } from 'react-native-paper'
 // import Custombutton from '../components/Custombutton'
@@ -10,6 +10,7 @@ import { StatusBar } from 'expo-status-bar'
 import { LinearGradient } from 'expo-linear-gradient'
 import { IconButton } from 'react-native-paper'
 import { GlobalContext } from '../helpers/GlobalContext'
+
 
 
 const AjoutDepenses = () => {
@@ -78,15 +79,26 @@ const AjoutDepenses = () => {
         }
     }
 
+    const navigation = useNavigation()
 
     return (
         <View style={styles.container}>
-            <StatusBar style="auto" />
-            <Text style={styles.label}>Ajout Revenu</Text>
+            <LinearGradient colors={['#023e8a', '#0096c7']} style={styles.background} />
+            <SafeAreaView />
+            <IconButton onPress={() =>
+                navigation.navigate('Home')
+            } icon="arrow-left"
+                size={30}
+                color="#fff"
+                style={styles.icon}
+                />
+            <Text style={styles.label}>Ajout Dépense</Text>
             <View style={styles.groupInput}>
                 <ScrollView>
-                    <Picker
+                <Picker
                         selectedValue={categories}
+                        style={{ backgroundColor: '#fff', borderRadius: 15, borderColor: '#fff', borderWidth: 1,width: 250, height: 50, justifyContent: 'center', alignItems: 'center',padding:20 }}
+
                         onValueChange={(itemValue, itemIndex) => {
                             checkCategories(itemValue)
                         }}
@@ -121,12 +133,13 @@ const AjoutDepenses = () => {
                         onChangeText={(text) => setAmmount(text)}
                         onBlur={() => checkAmmount()}
                         onFocus={() => checkAmmount()}
+                        borderRadius={15}
                     />
                     <Text style={styles.error}>{errors?.ammount}</Text>
 
 
 
-                    {/* <TextInput
+                     <TextInput
                         style={styles.input}
                         label="Date d'operation"
                         value={dayjs(operationDate).format('DD/MM/YYYY')}
@@ -135,8 +148,8 @@ const AjoutDepenses = () => {
                         onFocus={() => {
                             setDateTimeShow(true)
                         }}
-                    /> */}
-                    {/* {dateTimeShow && (
+                    /> 
+                     {dateTimeShow && (
                         <DateTimePicker
                             mode="date"
                             value={new Date()}
@@ -146,7 +159,7 @@ const AjoutDepenses = () => {
                                 setOperationDate(date)
                             }}
                         />
-                    )} */}
+                    )} 
 
                     <TextInput
                         multiline
@@ -155,17 +168,18 @@ const AjoutDepenses = () => {
                         onChangeText={(comment) => setComment(comment)}
                         value={comment}
                         placeholder="Commentaires"
+                        width={300}
                     />
                 </ScrollView>
                 <TouchableOpacity
-        onPress={() =>
-          navigation.push('Payments')
-        }
-        style={{ marginTop: 10, alignContent:'center', alignItems:'center', marginTop:20 }}>
-        <LinearGradient colors={['#03045e', '#023e8a',]} style={styles.button2}>
-          <Text style={{ color: 'white', fontSize: 16 }}>Valider</Text>
-        </LinearGradient>
-      </TouchableOpacity>
+                    onPress={() =>
+                        navigation.push('Home')
+                    }
+                    style={{ marginTop: 10, alignContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                    <LinearGradient colors={['#03045e', '#023e8a',]} style={styles.button2}>
+                        <Text style={{ color: 'white', fontSize: 16 }}>Valider</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -180,35 +194,55 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#03045e',
+        justifyContent: 'center',
+        alignItems: 'center',
+
     },
     groupInput: {
         flex: 1,
         width: '80%',
+        color: '#fff',
+        height: '100%',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        
     },
     noAccount: {
         alignSelf: 'center',
     },
     input: {
-        backgroundColor: 'none',
+
+        color: '#fff',
+        textDecorationStyle: 'solid',
+        textDecorationColor: '#fff',
+        backgroundColor: '#fff',
+        borderRadius: 15,
+        borderTopRightRadius: 15,
+        borderTopLeftRadius: 15,
+        marginBottom: 5,
+        marginTop: 5,
     },
     create: {
         color: 'blue',
     },
     error: {
-        color: 'crimson',
+        color: '#ade8f4',
     },
     label: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10,
         marginTop: 0,
-        paddingTop: 50,
+        paddingTop: 15,
         alignContent: 'center',
         alignItems: 'center',
         justifyContent: 'center',
+        color: 'white',
     },
     background: {
         position: 'absolute',
@@ -218,11 +252,12 @@ const styles = StyleSheet.create({
         height: '100%',
     },
     button2: {
-        marginBottom: 50,
+        marginBottom: 10,
         padding: 10,
         width: 200,
         alignItems: 'center',
         borderRadius: 25,
+        alignContent: 'center',
 
         shadowColor: "#000",
         shadowOffset: {
@@ -234,9 +269,8 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        top: 42,
-        left: 10,
+        top: 44,
+        left: 0,
         color: '#fff',
     }
-
 })

@@ -50,9 +50,9 @@ const HomeScreen = ({ navigation }) => {
           style={{ height: 50,
                     width: 250, 
                     backgroundColor: 'white',
-                     marginTop: 60, 
-                     backfaceVisibility: 'hidden', 
-                     borderRadius: 15,
+                    marginTop: 60, 
+                    backfaceVisibility: 'hidden', 
+                    borderRadius: 15,
                       justifyContent: 'center', 
                       alignContent: 'center',
                       padding:20 }}>
@@ -72,23 +72,22 @@ const HomeScreen = ({ navigation }) => {
 
 
     
-    <View style={{ flex: 2, flexDirection:'row' }}>
+    <View style={{ flex: 1, flexDirection:'row', alignItems:'center',}}>
       <TouchableOpacity
         onPress={() =>
           navigation.push('Income')
         }>
         <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button1}>
-          <Text style={{ color: 'white', fontSize: 16,justifyContent:'center', textAlign:'center' }}>Ajout{"\n"}Revenu</Text>
+          <Text style={{ color: 'white', fontSize: 16, textAlign:'center' }}>Ajout{"\n"}Revenu</Text>
         </LinearGradient>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() =>
           navigation.push('Payments')
-        }
-        style={{ marginTop: 10 }}>
+        }>
         <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button2}>
-          <Text style={{ color: 'white', fontSize: 16,justifyContent:'center', textAlign:'center' }}>Ajout{"\n"}Dépenses</Text>
+          <Text style={{ color: 'white', fontSize: 16, textAlign:'center' }}>Ajout{"\n"}Dépenses</Text>
         </LinearGradient>
       </TouchableOpacity>
     </View>
@@ -107,14 +106,13 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     borderRadius: 10,
     backgroundColor: 'white',
+    marginRight: 40,
 
   },
 
   button2: {
-    padding: 10,
     width: 120,
     height: 120,
-    alignItems: 'center',
     borderRadius: 100,
     justifyContent: 'center',
 
@@ -125,9 +123,9 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
+    marginLeft: 60,
   },
   button1: {
-    padding: 10,
     width: 120,
     height: 120,
     alignItems: 'center',

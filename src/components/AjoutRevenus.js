@@ -143,7 +143,6 @@ const AjoutRevenu = () => {
 
                     <TextInput
                         style={styles.input}
-
                         label="Date d'operation"
                         value={dayjs(operationDate).format('DD/MM/YYYY')}
                         onChangeText={() => { }}
