@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 const StatScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  <LinearGradient colors={['#023e8a', '#0096c7']} style={styles.background} />
+  <LinearGradient colors={['#4cc9f0', '#0096c7']} style={styles.background} />
 
     </View>
   )

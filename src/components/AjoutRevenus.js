@@ -98,9 +98,6 @@ const AjoutRevenu = () => {
                         style={{ backgroundColor: '#fff', borderRadius: 15, borderColor: '#fff', borderWidth: 1, }}
                         onValueChange={(itemValue, itemIndex) => {
                             checkCategories(itemValue)
-
-
-
                         }}
                     >
                         <Picker.Item label="Catégories" value="" />
@@ -115,7 +112,6 @@ const AjoutRevenu = () => {
                         <Picker.Item label="Autre" value="Autre" />
                     </Picker>
                     <Text style={styles.error}>{errors?.categories}</Text>
-
                     <TextInput
                         style={styles.input}
                         label="Bénéficiaire"
@@ -123,7 +119,6 @@ const AjoutRevenu = () => {
                         onChangeText={(text) => setLastname(text)}
                         onBlur={() => checkLastname()}
                         onFocus={() => checkLastname()}
-
                     />
                     <Text style={styles.error}>{errors?.lastname}</Text>
                     <TextInput
@@ -138,9 +133,6 @@ const AjoutRevenu = () => {
                         borderRadius={15}
                     />
                     <Text style={styles.error}>{errors?.ammount}</Text>
-
-
-
                     <TextInput
                         style={styles.input}
                         label="Date d'operation"
@@ -149,10 +141,7 @@ const AjoutRevenu = () => {
                         onBlur={() => { }}
                         onFocus={() => {
                             setDateTimeShow(true)
-
                         }}
-
-
                     />
                     {dateTimeShow && (
                         <DateTimePicker
@@ -163,12 +152,9 @@ const AjoutRevenu = () => {
                                 setDateTimeShow(false)
                                 setOperationDate(date)
                             }}
-
                         />
                     )}
-
                     <TextInput
-
                         multiline
                         numberOfLines={10}
                         style={styles.input}
@@ -177,9 +163,7 @@ const AjoutRevenu = () => {
                         placeholder="Commentaires"
                         color="#fff"
                         width={300}
-
                     />
-
                 </ScrollView>
                 <TouchableOpacity
                     onPress={() =>

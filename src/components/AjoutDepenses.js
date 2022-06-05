@@ -59,12 +59,9 @@ const AjoutDepenses = () => {
             }
         }
     }
-
     const checkAmmount = () => {
-
         let regexNumber = new RegExp(/^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$/)
         if (!ammount.match(regexNumber)) {
-
             setErrors({ ...errors, ammount: 'Le montant est invalide' })
             setDisabled(true)
         } else {
@@ -75,12 +72,9 @@ const AjoutDepenses = () => {
             setErrors({ ...errors, ammount: 'Le montant doit être renseigné' })
             setDisabled(true)
         } else {
-
         }
     }
-
     const navigation = useNavigation()
-
     return (
         <View style={styles.container}>
             <LinearGradient colors={['#023e8a', '#0096c7']} style={styles.background} />
@@ -136,10 +130,7 @@ const AjoutDepenses = () => {
                         borderRadius={15}
                     />
                     <Text style={styles.error}>{errors?.ammount}</Text>
-
-
-
-                     <TextInput
+                    <TextInput
                         style={styles.input}
                         label="Date d'operation"
                         value={dayjs(operationDate).format('DD/MM/YYYY')}
@@ -149,7 +140,7 @@ const AjoutDepenses = () => {
                             setDateTimeShow(true)
                         }}
                     /> 
-                     {dateTimeShow && (
+                    {dateTimeShow && (
                         <DateTimePicker
                             mode="date"
                             value={new Date()}
@@ -184,6 +175,8 @@ const AjoutDepenses = () => {
         </View>
     )
 }
+
+
 export default AjoutDepenses
 
 const styles = StyleSheet.create({
