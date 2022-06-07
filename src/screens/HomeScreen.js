@@ -31,8 +31,8 @@ const HomeScreen = ({ navigation }) => {
 
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-      <LinearGradient colors={['#4cc9f0', '#0096c7']} style={styles.background} />
-      <SafeAreaView/>
+      <LinearGradient colors={['#8C366c', '#6e64e7']} style={styles.background} />
+      <SafeAreaView />
       <View style={{ flex: 2 }} >
         <Picker
           prompt='Choisissez votre compte'
@@ -47,50 +47,52 @@ const HomeScreen = ({ navigation }) => {
           }}
           nativeID="picker"
           mode='dialog'
-          style={{ height: 50,
-                    width: 250, 
-                    backgroundColor: 'white',
-                    marginTop: 60, 
-                    backfaceVisibility: 'hidden', 
-                    borderRadius: 15,
-                      justifyContent: 'center', 
-                      alignContent: 'center',
-                      padding:20 }}>
+          style={{
+            height: 50,
+            width: 250,
+            backgroundColor: 'white',
+            marginTop: 60,
+            backfaceVisibility: 'hidden',
+            borderRadius: 15,
+            justifyContent: 'center',
+            alignContent: 'center',
+            padding: 20
+          }}>
 
           {data.map((item, index) => <Picker.Item label={item.user} value={item.user} key={index} />)}
 
         </Picker>
       </View>
- 
-      <View style={{ flex: 1 }}>
- 
-        <UserResume/>
-    
+
+      <View style={{ flex: 1, marginBottom: 80, paddingBottom:80 }}>
+
+        <UserResume />
+
       </View >
 
 
 
 
-    
-    <View style={{ flex: 1, flexDirection:'row', alignItems:'center',}}>
-      <TouchableOpacity
-        onPress={() =>
-          navigation.push('Income')
-        }>
-        <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button1}>
-          <Text style={{ color: 'white', fontSize: 16, textAlign:'center' }}>Ajout{"\n"}Revenu</Text>
-        </LinearGradient>
-      </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={() =>
-          navigation.push('Payments')
-        }>
-        <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button2}>
-          <Text style={{ color: 'white', fontSize: 16, textAlign:'center' }}>Ajout{"\n"}Dépenses</Text>
-        </LinearGradient>
-      </TouchableOpacity>
-    </View>
+      <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center', }}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push('Income')
+          }>
+          <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button1}>
+            <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Revenu</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() =>
+            navigation.push('Payments')
+          }>
+          <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button2}>
+            <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Dépenses</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
 
     </View >
   )
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 100,
     justifyContent: 'center',
-    
+
 
     shadowColor: "#000",
     shadowOffset: {

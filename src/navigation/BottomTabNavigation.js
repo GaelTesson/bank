@@ -31,7 +31,7 @@ const BottomTabNavigation = () => {
       onIndexChange={setIndex}
       renderScene={renderScene}
       barStyle={{
-        backgroundColor: '#0096c7',
+        backgroundColor: '#6e64e7',
         elevation: 8,
         shadowColor: '#000',
         alignSelf: 'center',
@@ -40,8 +40,7 @@ const BottomTabNavigation = () => {
         shadowRadius: 2,
         elevation: 5,
         width: '100%',
-        borderTopColor: '#03045e',
-        borderTopWidth: 1,
+
 
       }}
 

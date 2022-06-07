@@ -5,9 +5,12 @@ import { TouchableOpacity } from 'react-native-web'
 
 const UserResume = () => {
     return (
-        
-            
-            <Card style={{ margin: 10 }}/>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Card style={{ width: 270, height: 280, alignItems: 'center', justifyContent: 'center' , marginBottom:10}}>
+                <Text>UserResume</Text>
+
+            </Card>
+        </View>
             
         
     )
