@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
+import {Stats} from '../components/Stats'
 
 
 
@@ -8,7 +9,7 @@ const StatScreen = () => {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
   <LinearGradient colors={['#4cc9f0', '#0096c7']} style={styles.background} />
-
+  <Stats />
     </View>
   )
 }

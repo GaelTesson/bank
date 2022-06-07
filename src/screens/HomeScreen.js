@@ -56,12 +56,13 @@ const HomeScreen = ({ navigation }) => {
             borderRadius: 15,
             justifyContent: 'center',
             alignContent: 'center',
-            padding: 20
+            padding: 20,
+            fontWeight: 'bold',
           }}>
 
-          {data.map((item, index) => <Picker.Item label={item.user} value={item.user} key={index} />)}
+          {data.map((item, index) => <Picker.Item label={item.user} value={item.user} key={index} style={{fontWeight:'bold'}} />)}
 
-        </Picker>
+        </Picker> 
       </View>
 
       <View style={{ flex: 1, marginBottom: 80, paddingBottom:80 }}>
@@ -79,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
           onPress={() =>
             navigation.push('Income')
           }>
-          <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button1}>
+          <LinearGradient colors={['#a88fac', '#c0b9dd']} style={styles.button1}>
             <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Revenu</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -88,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
           onPress={() =>
             navigation.push('Payments')
           }>
-          <LinearGradient colors={['#03045e', '#023e8a']} style={styles.button2}>
+          <LinearGradient colors={['#a88fac', '#c0b9dd']} style={styles.button2}>
             <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Dépenses</Text>
           </LinearGradient>
         </TouchableOpacity>
@@ -97,6 +98,7 @@ const HomeScreen = ({ navigation }) => {
     </View >
   )
 }
+
 
 export default HomeScreen
 
@@ -109,6 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     marginRight: 40,
+
 
   },
 
@@ -126,6 +129,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     marginLeft: 60,
+    elevation: 7,
   },
   button1: {
     width: 120,
@@ -142,6 +146,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
+    elevation: 7,
   },
   background: {
     position: 'absolute',

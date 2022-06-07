@@ -92,6 +92,7 @@ const AjoutDepenses = () => {
                 <Picker
                         selectedValue={categories}
                         style={{ backgroundColor: '#fff', borderRadius: 15, borderColor: '#fff', borderWidth: 1,width: 250, height: 50, justifyContent: 'center', alignItems: 'center',padding:20 }}
+
                         onValueChange={(itemValue, itemIndex) => {
                             checkCategories(itemValue)
                         }}
