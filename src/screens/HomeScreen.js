@@ -7,9 +7,10 @@ import data from '../../assets/data.json'
 import { Picker, PickerIOS } from '@react-native-picker/picker'
 import { Card } from 'react-native-paper'
 import UserResume from '../components/UserResume'
+import { useNavigation } from '@react-navigation/native'
+import StackNavigation from '../navigation/StackNavigation'
 
-const HomeScreen = ({ navigation }) => {
-  
+const HomeScreen = ({navigation}) => {
 
   const contextValue = useContext(GlobalContext)
 
@@ -79,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
       <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center', }}>
         <TouchableOpacity
           onPress={() =>
-            navigation.push('Income')
+            navigation.navigate('Income')
           }>
           <LinearGradient colors={['#a88fac', '#c0b9dd']} style={styles.button1}>
             <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Revenu</Text>
@@ -88,7 +89,7 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           onPress={() =>
-            navigation.push('Payments')
+            navigation.navigate('Payments')
           }>
           <LinearGradient colors={['#a88fac', '#c0b9dd']} style={styles.button2}>
             <Text style={{ color: 'white', fontSize: 16, textAlign: 'center' }}>Ajout{"\n"}Dépenses</Text>

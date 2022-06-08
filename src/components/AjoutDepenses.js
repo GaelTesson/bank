@@ -71,8 +71,7 @@ const AjoutDepenses = () => {
         if (!ammount) {
             setErrors({ ...errors, ammount: 'Le montant doit être renseigné' })
             setDisabled(true)
-        } else {
-        }
+        } 
     }
     const navigation = useNavigation()
     return (
@@ -120,7 +119,7 @@ const AjoutDepenses = () => {
                     />
                     <Text style={styles.error}>{errors?.lastname}</Text>
                     <TextInput
-                        keyboardType='number-pad'
+                        keyboardType='number'
                         style={styles.input}
                         label="Montant"
                         value={ammount}
@@ -166,6 +165,7 @@ const AjoutDepenses = () => {
                     onPress={() =>
                         navigation.push('Home')
                     }
+                    disabled={disabled}
                     style={{ marginTop: 10, alignContent: 'center', alignItems: 'center', marginTop: 20 }}>
                     <LinearGradient colors={['#03045e', '#023e8a',]} style={styles.button2}>
                         <Text style={{ color: 'white', fontSize: 16 }}>Valider</Text>

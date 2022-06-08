@@ -53,10 +53,7 @@ const tableau = incomes.map(element=> {
 }).sort((a,b) =>  b.date - a.date)
 
 
-    useEffect(() => {
-        setUser(contextValue.user)
-        setAmmount(contextValue.ammount)
-    })
+    
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection:'row', }}>
@@ -76,10 +73,7 @@ const tableau = incomes.map(element=> {
                     <View style={{flex:1}}>
                         <Text style={{fontWeight:'bold', marginBottom:10,paddingStart:19}}>Dépenses</Text>
                         {depenses}
-
-
                     </View>
-                   
                 </View>
                 <View style={{alignItems:'center'}}>
                 <View style={{alignItems:'center', marginTop:16, backgroundColor:'#fff', borderWidth:1, borderColor:'black', borderRadius:15, width:'80%', height:45, justifyContent:'center' }}>

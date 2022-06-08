@@ -13,13 +13,13 @@ const StackNavigation = () => {
   return (
 
 
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={HomeScreen} options={{headerShown: false}}>
+
+      <Stack.Navigator initialRouteName='Home' options={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name='Income' component={AddIncomeScreen} options={{headerShown: false}}/>
         <Stack.Screen name='Payments' component={AddPaymentsScreen} options={{headerShown: false}}/>
       </Stack.Navigator>
-    </NavigationContainer>
+
 
   )
 }

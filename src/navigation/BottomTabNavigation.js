@@ -1,52 +1,49 @@
 import * as React from 'react'
-import { BottomNavigation } from 'react-native-paper'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen'
 import AccountScreen from '../screens/AccountScreen'
 import StatScreen from '../screens/StatScreen'
+import { Ionicons } from '@expo/vector-icons'
 import StackNavigation from './StackNavigation'
-import { StyleSheet } from 'react-native'
 
-const HomeRoute = () => <StackNavigation />
-const AccountRoute = () => <AccountScreen />
-const StatRoute = () => <StatScreen />
 
-const BottomTabNavigation = () => {
+const Tab = createBottomTabNavigator();
 
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'home', title: 'Home', icon: 'home' },
-    { key: 'account', title: 'Account', icon: 'card' },
-    { key: 'stat', title: 'Stats', icon: 'wave' },
-  ]);
-
-  const renderScene = BottomNavigation.SceneMap({
-    home: HomeRoute,
-    account: AccountRoute,
-    stat: StatRoute,
-  });
-
+const MyTabs = () => {
+  
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      barStyle={{
-        backgroundColor: '#6e64e7',
-        elevation: 8,
-        shadowColor: '#000',
-        alignSelf: 'center',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 5,
-        width: '100%',
+    <Tab.Navigator
+    initialRouteName='Home'
+      screenOptions={({ route }) => ({
+        tabBarStyle: {
+                  backgroundColor: '#6e64e7',
+                  borderTopColor: '#6e64e7',
+                  
+                },
+                headerShown: false,
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = 'home'
+          } else if (route.name === 'Account') {
+            iconName = 'list'
+          } else if (route.name === 'Stats') {
+            iconName = 'stats-chart'
+          }
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color='white'} />
+          
+        }
 
+        
 
-      }}
-
-    />
+      })}
+    >
+      <Tab.Screen name="Home" component={StackNavigation}  />
+      <Tab.Screen name="Account" component={AccountScreen} />
+      <Tab.Screen name="Stats" component={StatScreen} />
+    </Tab.Navigator>
   )
 }
 
-export default BottomTabNavigation
-
+export default MyTabs

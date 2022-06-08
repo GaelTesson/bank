@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View ,SafeAreaView} from 'react-native';
-import BottomTabNavigation from './src/navigation/BottomTabNavigation';
+import MyTabs from './src/navigation/BottomTabNavigation';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { StatusBar } from 'expo-status-bar';
 import GlobalContext from './src/helpers/GlobalContext';
+import { NavigationContainer } from '@react-navigation/native';
 
 const contextValue = {
   user:"Mayer Franklin",
@@ -10,15 +11,13 @@ const contextValue = {
 }
 
 const App = () => (
-  <PaperProvider>
-<GlobalContext.Provider value={contextValue}>
-  
-    
+<NavigationContainer>
+  <GlobalContext.Provider value={contextValue}>
     <StatusBar style="auto" />
-  <BottomTabNavigation/>
+    <MyTabs/>
   </GlobalContext.Provider>
-  </PaperProvider>
+</NavigationContainer>
   
 )
 
-export default App;
+export default App
