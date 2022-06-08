@@ -58,7 +58,7 @@ const tableau = incomes.map(element=> {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection:'row', }}>
             
-            <Card style={{ width: 280, height: 280, alignItems: 'center', justifyContent: 'center' , marginBottom:10,}}>
+            <Card style={{ width: 280, height: 280, alignItems: 'center', justifyContent: 'center' , marginBottom:10, borderRadius:8}}>
                 <Text style={styles.text}>{user}</Text>
 
                 
@@ -76,7 +76,7 @@ const tableau = incomes.map(element=> {
                     </View>
                 </View>
                 <View style={{alignItems:'center'}}>
-                <View style={{alignItems:'center', marginTop:16, backgroundColor:'#fff', borderWidth:1, borderColor:'black', borderRadius:15, width:'80%', height:45, justifyContent:'center' }}>
+                <View style={{alignItems:'center', marginTop:30, backgroundColor:'#fff', borderWidth:1, borderColor:'black', borderRadius:15, width:'80%', height:45, justifyContent:'center' }}>
                     <Text style={Math.sign(total) === 1 ? {color : '#7fb069', fontWeight:'bold', fontSize:24} : {color : '#ca3c25',fontWeight:'bold', fontSize:24}}>Total: {total}€</Text>
                 </View>
                 </View>
