@@ -1,75 +1,76 @@
-// import React from 'react'
-// import { ScrollView, StatusBar, Dimensions, Text } from 'react-native'
-// import ScrollableTabView from 'react-native-scrollable-tab-view'
-// import {LineChart} from 'react-native-chart-kit'
-// import { data,contributionData, pieChartData, progressChartData } from './data'
-// import 'babel-polyfill'
+import React from 'react'
+import { ScrollView, StatusBar, Dimensions, Text, StyleSheet } from 'react-native'
+import ScrollableTabView from 'react-native-scrollable-tab-view'
+import { LineChart } from 'react-native-chart-kit'
+import { GlobalContext } from '../helpers/GlobalContext'
+import { useContext } from 'react'
+import 'babel-polyfill'
 
-// // in Expo - swipe left to see the following styling, or create your own
-// // const chartConfigs = [
 
-// //     {
-// //         backgroundColor: '#022173',
-// //         backgroundGradientFrom: '#022173',
-// //         backgroundGradientTo: '#1b3fa0',
-// //         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-// //         style: {
-// //             borderRadius: 2,
-// //             marginVertical: 12,
-            
-// //         }
-// //     },
-// // ]
+const Stats = ({data}) => {
 
-// const Stats=()=>{ 
-//         // const width = Dimensions.get('window').width
-//         // const height = 220
-//         return (
+    console.log(data)
+    const contextValue = useContext(GlobalContext)
 
-//             <View><Text>En cours</Text></View>
-//         )
-//     }
-//             // <ScrollableTabView renderTabBar={this.renderTabBar}>
-//             //     {chartConfigs.map(chartConfig => {
-//             //         const labelStyle = {
-//             //             color: chartConfig.color(),
-//             //             marginVertical: 10,
-//             //             textAlign: 'center',
-//             //             fontSize: 16
-//             //         }
-//             //         const graphStyle = {
-//             //             marginVertical: 8,
-//             //             ...chartConfig.style
-//             //         }
-//             //         return (
-//             //             <ScrollView>
-//             //             <Text>
-//             //             Bezier Line Chart
-//             //           </Text>
-//             //           <LineChart
-//             //             data={data}
-//             //             width={Dimensions.get('window').width} // from react-native
-//             //             height={220}
-//             //             yAxisLabel={'$'}
-//             //             chartConfig={{
-//             //               backgroundColor: '#e26a00',
-//             //               backgroundGradientFrom: '#fb8c00',
-//             //               backgroundGradientTo: '#ffa726',
-//             //               decimalPlaces: 2, // optional, defaults to 2dp
-//             //               color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-//             //               style: {
-//             //                 borderRadius: 16
-//             //               }
-//             //             }}
-//             //             bezier
-//             //             style={{
-//             //               marginVertical: 8,
-//             //               borderRadius: 16
-//             //             }}
-//             //           />
-//             //             </ScrollView>
-//             //         )
-//             //     })}
-//             // </ScrollableTabView>
-     
-// export default Stats
+
+    const dataSortPrice = data.map(elt => parseFloat(elt.amount.replace('€', '').replace(',', '')))
+
+    const dataSortDate = data.map(elt => new Date(elt.date).toLocaleDateString())
+
+    console.log(dataSortPrice)
+    console.log(dataSortDate)
+
+    const width = Dimensions.get('window').width
+    const height = 220
+    const barData = {
+        labels: dataSortDate,
+        datasets: [
+            {
+                data: dataSortPrice,
+            },
+        ],
+    };
+
+        return (
+            <ScrollView>
+                <Text style={styles.text}>
+                    Statisques {contextValue.user}
+                </Text>
+                <LineChart
+                    data={barData}
+                    width={Dimensions.get('window').width} // from react-native
+                    height={220}
+                    yAxisLabel={'€'}
+                    chartConfig={{
+                        backgroundColor: '#fff',
+                        backgroundGradientFrom: '#a88fac',
+                        backgroundGradientTo: '#c0b9dd',
+                        decimalPlaces: 2, // optional, defaults to 2dp
+                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        style: {
+                            borderRadius: 16
+                        }
+                    }}
+                    bezier
+                    style={{
+                        marginVertical: 8,
+                        borderRadius: 16
+                    }}
+                />
+            </ScrollView>
+        )
+    }        
+
+
+export default Stats
+
+const styles = StyleSheet.create({
+    text: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    }
+})

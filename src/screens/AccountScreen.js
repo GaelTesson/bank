@@ -1,18 +1,18 @@
-import { View, Text, StyleSheet, FlatList , TouchableOpacity} from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, FlatList , TouchableOpacity, } from 'react-native'
+import React, { useState, useContext, useEffect } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import GlobalContext from '../helpers/GlobalContext'
-import { useContext, useEffect, useState } from 'react'
 import data from '../../assets/data.json'
 import CardAlex from '../components/CardAlex'
 import { useFocusEffect } from '@react-navigation/native'
+import { Picker } from "@react-native-picker/picker"
+//import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 
 
 
-
-const AccountScreen = ({navigation}) => {
+const AccountScreen = () => {
 
 
   const contextValue = useContext(GlobalContext)
@@ -50,33 +50,18 @@ const AccountScreen = ({navigation}) => {
   return (
 
 
-
       <View style={styles.container}>
 
-        <View style={{ flex : 1 }}>
+        <LinearGradient colors={['#8C366c', '#6e64e7']} style={styles.background}/>
+        
 
-          <Picker
-            style={styles.picker}
-            selectedValue={user}
-            mode="dropdown"
-            onValueChange={(text, index) => {
-              contextValue.user = text
-              contextValue.index = index
-              setUser(text)
-            }}
-          >
-            {data.map((item, index) =>
-              <Picker.Item style={{ fontSize : 13}} label={item.user} value={item.user} key={index} />
-            )}
-          </Picker>
+        
 
-        </View>
-
-        <View style={{ flex : 1.5, flexDirection : 'row', justifyContent : 'center', alignItems  : 'center' }}>
+        <View style={{ flex : 1.75, flexDirection : 'row', justifyContent : 'flex-end', alignItems  : 'center',  }}>
 
           <View style={{ flex : 1 }}>
 
-            <View style={{backgroundColor : '#546a7b', padding : 5, marginEnd : 5, borderTopLeftRadius : 7, borderTopRightRadius : 7 }}>
+            <View style={{backgroundColor : '#6e64e7', padding : 5, marginEnd : 5, borderTopLeftRadius : 7, borderTopRightRadius : 7 }}>
               <Text style={{ color : '#fdfdff', textAlign : 'center'}}>Total Revenus</Text>
             </View>
             <View style={{ backgroundColor : '#2A2D2E', padding : 5, marginEnd : 5, borderBottomLeftRadius : 7, borderBottomRightRadius : 7  }}>
@@ -87,7 +72,7 @@ const AccountScreen = ({navigation}) => {
 
           <View style={{ flex : 1 }}>
 
-            <View style={{backgroundColor : '#546a7b', padding : 5, marginStart : 5, borderTopLeftRadius : 7, borderTopRightRadius : 7 }}>
+            <View style={{backgroundColor : '#6e64e7', padding : 5, marginStart : 5, borderTopLeftRadius : 7, borderTopRightRadius : 7 }}>
               <Text style={{ color : '#fdfdff', textAlign : 'center'}}>Total Dépenses</Text>
             </View>
 
@@ -101,9 +86,9 @@ const AccountScreen = ({navigation}) => {
 
         <View style={{ flex : 1.6, justifyContent : 'center', alignItems : 'center' }}>
 
-          <View style={{ backgroundColor : '#2A2D2E', paddingHorizontal : 20, paddingVertical : 10, borderRadius : 7 }}>
+          <View style={{ backgroundColor : '#2A2D2E', paddingHorizontal : 28, paddingVertical : 18, borderRadius : 8 }}>
           <Text style={{ fontWeight : 'bold', fontSize : 20, color :  '#fdfdff', textAlign : 'center'}}>SOLDE</Text>
-          <Text style={ Math.sign(bankBalance) === 1 ? { fontWeight : 'bold', fontSize : 20, color :  '#62929e', textAlign : 'center'} : { fontWeight : 'bold', fontSize : 20, color :  '#851624', textAlign : 'center'}}>{bankBalance} €</Text>
+          <Text style={ Math.sign(bankBalance) === 1 ? { fontWeight : 'bold', fontSize : 20, color :  '#7fb069', textAlign : 'center'} : { fontWeight : 'bold', fontSize : 20, color :  '#ca3c25', textAlign : 'center'}}>{bankBalance} €</Text>
           </View>
         </View>
 
@@ -148,36 +133,12 @@ const AccountScreen = ({navigation}) => {
         <View style={styles.containerFlatlist}>
           <FlatList
             data={showTransactions}
-            renderItem={Card}
+            renderItem={CardAlex}
             keyExtractor={(item, index) => index}
             ListFooterComponentStyle = {{ borderBottomLeftRadius : 8, borderBottomRightRadius : 8}}
           />
         </View>
 
-
-
-
-        {/* <View style={styles.containerButtons}>
-
-          <View style={{ flex : 1 }}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Income')}
-                style={styles.buttonLeft}
-              >
-                  <Text style={styles.textButton}><Icon name='plus' />   REVENUS</Text>
-              </TouchableOpacity>
-          </View>
-
-          <View style={{ flex : 1 }}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Expense')}
-                style={styles.buttonRight}
-              >
-                <Text style={styles.textButton}><Icon name='plus' />   DEPENSES</Text>
-              </TouchableOpacity>
-          </View>
-
-        </View> */}
 
       </View>
   )
@@ -188,7 +149,6 @@ export default AccountScreen
 const styles = StyleSheet.create({
   container : {
     flex : 1,
-    backgroundColor : '#393d3f',
     padding : 14,
     color : '#fdfdff'
   },
@@ -210,7 +170,10 @@ const styles = StyleSheet.create({
     flex : 4.5,
     backgroundColor: 'white',
     borderBottomLeftRadius : 8,
-    borderBottomRightRadius : 8
+    borderBottomRightRadius : 8,
+    borderRadius : 8,
+    borderBottomLeftRadius : 8,
+    paddingBottom : 20,
   },
   containerButtons : {
     flex : 1.5,
@@ -221,7 +184,7 @@ const styles = StyleSheet.create({
   showActive : {
     padding : 10,
     marginVertical : 10,
-    backgroundColor : '#62929e',
+    backgroundColor : '#6e64e7',
     borderTopLeftRadius : 8,
     borderTopRightRadius : 8,
     marginBottom : 0
@@ -230,7 +193,10 @@ const styles = StyleSheet.create({
     padding : 10,
     marginVertical : 10,
     backgroundColor : '#393d3f',
-    marginBottom : 0
+    marginBottom : 0,
+    borderTopLeftRadius : 8,
+    borderTopRightRadius : 8,
+
   },
   showActiveText : {
     color : '#FDFDFF',
@@ -238,7 +204,7 @@ const styles = StyleSheet.create({
     fontWeight : 'bold'
   },
   showInactiveText : {
-    color : '#62929e',
+    color : '#fff',
     textAlign : 'center',
     fontWeight : 'bold'
   },
@@ -261,5 +227,14 @@ const styles = StyleSheet.create({
   textButton : {
     color : '#FDFDff',
     textAlign : 'center'
+  },
+
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: '105%',
   }
+
 })

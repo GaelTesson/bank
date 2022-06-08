@@ -17,10 +17,15 @@ const MyTabs = () => {
       screenOptions={({ route }) => ({
         tabBarStyle: {
                   backgroundColor: '#6e64e7',
+                  
                   borderTopColor: '#6e64e7',
+                  
                   
                 },
                 headerShown: false,
+                tabBarLabelStyle : {
+                  color : 'white'
+                },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'Home') {
