@@ -9,6 +9,7 @@ import { Card } from 'react-native-paper'
 import UserResume from '../components/UserResume'
 
 const HomeScreen = ({ navigation }) => {
+  
 
   const contextValue = useContext(GlobalContext)
 

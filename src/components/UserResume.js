@@ -87,15 +87,6 @@ const tableau = incomes.map(element=> {
                 </View>
                 </View>
             </Card>
-
-            <View>
-                <FlatList
-                    data={tableau}
-                    renderItem={CardAlex}
-                    keyExtractor={(item, index) => index}
-                    ListFooterComponentStyle = {{ borderBottomLeftRadius : 8, borderBottomRightRadius : 8}}
-                />
-            </View>
             
         </View>
         
