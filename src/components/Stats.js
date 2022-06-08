@@ -2,16 +2,12 @@ import React from 'react'
 import { ScrollView, StatusBar, Dimensions, Text, StyleSheet } from 'react-native'
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import { LineChart } from 'react-native-chart-kit'
-import { GlobalContext } from '../helpers/GlobalContext'
-import { useContext } from 'react'
 import 'babel-polyfill'
 
 
 const Stats = ({data}) => {
 
     console.log(data)
-    const contextValue = useContext(GlobalContext)
-
 
     const dataSortPrice = data.map(elt => parseFloat(elt.amount.replace('€', '').replace(',', '')))
 
@@ -34,7 +30,7 @@ const Stats = ({data}) => {
         return (
             <ScrollView>
                 <Text style={styles.text}>
-                    Statisques {contextValue.user}
+                    Statisques de votre compte
                 </Text>
                 <LineChart
                     data={barData}
@@ -71,6 +67,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center',
+        marginTop: 20,
+        marginBottom: 20,
+        marginLeft: '15%',
+        
     }
 })
